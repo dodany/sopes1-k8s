@@ -9,7 +9,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go-server
+      app: go-server      
   template:
     metadata:
       labels:
@@ -18,3 +18,24 @@ spec:
       containers:
       - image: 11294/go-server
         name: go-server
+--
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: go-client
+  name: go-client-deployment
+  namespace: project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-client     
+  template:
+    metadata:
+      labels:
+        app: go-client
+    spec:
+      containers:
+      - image: 11294/go-client
+        name: go-client
