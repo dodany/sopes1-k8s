@@ -18,7 +18,7 @@ spec:
       containers:
       - image: 11294/go-server
         name: go-server
---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
