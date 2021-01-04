@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: load-ingress
+  namespace: project
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: sopes1-proy2-public-ip
+  labels:
+    app: ingress
+spec:
+  rules:
+  - host: load.dummy-blue-green.ga
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: load-service
+            servicePort: 5000
+  - host: blue.dummy-blue-green.ga
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: go-client-service
+            servicePort: 5000
+  - host: green.dummy-blue-green.ga
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: redis-client-service
+            servicePort: 5000
+---
