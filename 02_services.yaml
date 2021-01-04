@@ -12,3 +12,18 @@ spec:
     targetPort: 50051
   selector:
     app: go-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: go-client
+  name: go-client-service
+  namespace: project
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: go-client
