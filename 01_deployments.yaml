@@ -9,9 +9,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go-server      
+      app: go-server
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: go-server
     spec:
@@ -19,7 +21,6 @@ spec:
       - image: 11294/go-server
         name: go-server
 ---
-apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -30,12 +31,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go-client     
+      app: go-client
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: go-client
     spec:
       containers:
       - image: 11294/go-client
         name: go-client
+---
