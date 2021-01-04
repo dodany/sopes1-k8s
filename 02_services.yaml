@@ -2,16 +2,31 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: go-server
-  name: go-server-service
+    app: load
+  name: load-service
   namespace: project
 spec:
   ports:
-  - port: 50051
+  - port: 5000
     protocol: TCP
-    targetPort: 50051
+    targetPort: 5000
   selector:
-    app: go-server
+    app: load
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis-client
+  name: redis-client-service
+  namespace: project
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: redis-client
 ---
 apiVersion: v1
 kind: Service
@@ -22,8 +37,8 @@ metadata:
   namespace: project
 spec:
   ports:
-  - port: 3000
+  - port: 5000
     protocol: TCP
-    targetPort: 3000
+    targetPort: 5000
   selector:
     app: go-client
