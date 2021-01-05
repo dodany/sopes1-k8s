@@ -2,43 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: load
-  name: load-deployment
-  namespace: project
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: load
-  template:
-    metadata:
-      annotations:
-        linkerd.io/inject: enabled
-      labels:
-        app: load
-    spec:
-      containers:
-      - image: czdev/blue
-        name: load
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: redis-client
+    app: load-client
+    client: redis
   name: redis-client-deployment
   namespace: project
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis-client
+      app: load-client
+      client: redis
   template:
     metadata:
       annotations:
         linkerd.io/inject: enabled
       labels:
-        app: redis-client
+        app: load-client
+        client: redis
     spec:
       containers:
       - image: czdev/green
@@ -48,20 +28,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: go-client
+    app: load-client
+    client: go
   name: go-client-deployment
   namespace: project
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go-client
+      app: load-client
+      client: go
   template:
     metadata:
       annotations:
         linkerd.io/inject: enabled
       labels:
-        app: go-client
+        app: load-client
+        client: go
     spec:
       containers:
       - image: czdev/blue
