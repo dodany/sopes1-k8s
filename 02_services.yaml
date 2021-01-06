@@ -56,8 +56,8 @@ metadata:
   namespace: project
 spec:
   ports:
-  - port: 50051
+  - port: 50050
     protocol: TCP
-    targetPort: 50051
+    targetPort: 50050
   selector:
     app: go-server    
