@@ -15,5 +15,5 @@ spec:
     http:
       paths:      
         - backend:
-            serviceName: load-service
-            servicePort: 5000  
+            serviceName: redis-client-service
+            servicePort: 4000  
