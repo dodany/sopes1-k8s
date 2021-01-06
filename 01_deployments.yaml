@@ -21,7 +21,7 @@ spec:
         client: redis
     spec:
       containers:
-      - image: 11294/redis-pub
+      - image: 11294/redis-pub:2.0
         name: redis-client
 ---
 apiVersion: apps/v1
@@ -47,7 +47,7 @@ spec:
         client: go
     spec:
       containers:
-      - image: 11294/go-client:1.2
+      - image: 11294/go-client:2.0
         name: go-client
 ---
 apiVersion: apps/v1
@@ -70,7 +70,7 @@ spec:
         app: go-server        
     spec:
       containers:
-      - image: 11294/go-server
+      - image: 11294/go-server:2.0
         name: go-server
 ---
 apiVersion: apps/v1
