@@ -7,6 +7,6 @@ spec:
   service: load-service
   backends:
   - service: go-client-service
-    weight: 500m
+    weight: 1000m
   - service: redis-client-service
-    weight: 500m
+    weight: 0m
