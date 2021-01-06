@@ -47,7 +47,7 @@ spec:
         client: go
     spec:
       containers:
-      - image: 11294/go-client
+      - image: 11294/go-client:1.2
         name: go-client
 ---
 apiVersion: apps/v1
