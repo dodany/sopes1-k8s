@@ -23,9 +23,9 @@ metadata:
   namespace: project
 spec:
   ports:
-  - port: 5000
+  - port: 4000
     protocol: TCP
-    targetPort: 5000
+    targetPort: 4000
   selector:
     app: load-client
     client: redis
@@ -40,9 +40,24 @@ metadata:
   namespace: project
 spec:
   ports:
-  - port: 5000
+  - port: 3000
     protocol: TCP
-    targetPort: 5000
+    targetPort: 3000
   selector:
     app: load-client
     client: go
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: go-server    
+  name: go-server-service
+  namespace: project
+spec:
+  ports:
+  - port: 50051
+    protocol: TCP
+    targetPort: 50051
+  selector:
+    app: go-server    

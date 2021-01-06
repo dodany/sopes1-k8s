@@ -21,7 +21,7 @@ spec:
         client: redis
     spec:
       containers:
-      - image: czdev/green
+      - image: 11294/redis-pub
         name: redis-client
 ---
 apiVersion: apps/v1
@@ -47,6 +47,51 @@ spec:
         client: go
     spec:
       containers:
-      - image: czdev/blue
+      - image: 11294/go-client
         name: go-client
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: go-server    
+  name: go-server-deployment
+  namespace: project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-server      
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: go-server        
+    spec:
+      containers:
+      - image: 11294/go-server
+        name: go-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: redis-sub
+  name: redis-sub-deployment
+  namespace: project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-sub
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: redis-sub
+    spec:
+      containers:
+      - image: 11294/redis-sub
+        name: redis-sub
