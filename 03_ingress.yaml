@@ -15,5 +15,5 @@ spec:
     http:
       paths:      
         - backend:
-            serviceName: redis-client-service
-            servicePort: 4000  
+            serviceName: go-client-service
+            servicePort: 3000  
