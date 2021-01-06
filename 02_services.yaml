@@ -23,9 +23,9 @@ metadata:
   namespace: project
 spec:
   ports:
-  - port: 4000
+  - port: 3000
     protocol: TCP
-    targetPort: 4000
+    targetPort: 3000
   selector:
     app: load-client
     client: redis
