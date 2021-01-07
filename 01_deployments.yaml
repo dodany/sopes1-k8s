@@ -21,7 +21,7 @@ spec:
         client: redis
     spec:
       containers:
-      - image: 11294/redis-pub:2.1
+      - image: 11294/redis-pub:3.0
         name: redis-client
 ---
 apiVersion: apps/v1
@@ -93,5 +93,5 @@ spec:
         app: redis-sub
     spec:
       containers:
-      - image: 11294/redis-sub
+      - image: 11294/redis-sub:3.0
         name: redis-sub
